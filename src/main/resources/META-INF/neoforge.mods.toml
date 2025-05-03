@@ -1,0 +1,31 @@
+
+modLoader = "javafml"
+loaderVersion = "4,"
+
+license = "MIT"
+
+[[mods]]
+modId = "viatora"
+version = "0.1.0"
+displayName = "Viatora"
+
+authors = "me"
+description = '''funny mod horaaay'''
+
+[[mixins]]
+config = "viatora.mixins.json"
+
+[[dependencies."viatora"]]
+modId = "neoforge"
+type = "required"
+versionRange = "21,"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."viatora"]]
+modId = "minecraft"
+type = "required"
+versionRange = "1.21.1,1.22"
+ordering = "NONE"
+side = "BOTH"
+

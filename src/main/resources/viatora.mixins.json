@@ -1,0 +1,20 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.raccoon.will.viatora.core.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "viatora.refmap.json",
+  "mixins": [
+    "block.BeehiveBlockEntityMixin",
+    "block.BeehiveBlockMixin",
+    "entity.AbstractHorseMixin",
+    "entity.CamelMixin",
+    "entity.TameableAnimalMixin"
+  ],
+  "client": [
+    "entity.CamelRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
