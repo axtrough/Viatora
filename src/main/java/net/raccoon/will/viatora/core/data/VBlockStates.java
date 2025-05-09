@@ -23,48 +23,6 @@ public class VBlockStates extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        beehiveBlock(VBlocks.RED_BEEHIVE, "red");
-        beehiveBlock(VBlocks.ORANGE_BEEHIVE, "orange");
-        beehiveBlock(VBlocks.YELLOW_BEEHIVE, "yellow");
-        beehiveBlock(VBlocks.LIME_BEEHIVE, "lime");
-        beehiveBlock(VBlocks.GREEN_BEEHIVE, "green");
-        beehiveBlock(VBlocks.CYAN_BEEHIVE, "cyan");
-        beehiveBlock(VBlocks.LIGHT_BLUE_BEEHIVE, "light_blue");
-        beehiveBlock(VBlocks.BLUE_BEEHIVE, "blue");
-        beehiveBlock(VBlocks.PURPLE_BEEHIVE, "purple");
-        beehiveBlock(VBlocks.MAGENTA_BEEHIVE, "magenta");
-        beehiveBlock(VBlocks.PINK_BEEHIVE, "pink");
-        beehiveBlock(VBlocks.WHITE_BEEHIVE, "white");
-        beehiveBlock(VBlocks.LIGHT_GRAY_BEEHIVE, "light_gray");
-        beehiveBlock(VBlocks.GRAY_BEEHIVE, "gray");
-        beehiveBlock(VBlocks.BLACK_BEEHIVE, "black");
-        beehiveBlock(VBlocks.BROWN_BEEHIVE, "brown");
-    }
-
-    private void beehiveBlock(DeferredBlock<Block> block, String colorName) {
-        String baseModelName = colorName + "_beehive";
-        String honeyModelName = colorName + "_beehive_honey";
-
-        ModelFile baseModel = models().getExistingFile(modLoc("block/beehive/" + baseModelName));
-        ModelFile honeyModel = models().getExistingFile(modLoc("block/beehive/" + honeyModelName));
-
-        VariantBlockStateBuilder builder = getVariantBuilder(block.get());
-
-        for (Direction direction : List.of(Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST)) {
-            int yRot = (int) direction.toYRot();
-
-            for (int honeyLevel = 0; honeyLevel <= 5; honeyLevel++) {
-                ModelFile model = honeyLevel == 5 ? honeyModel : baseModel;
-
-                builder.partialState()
-                        .with(HorizontalDirectionalBlock.FACING, direction)
-                        .with(BlockStateProperties.LEVEL_HONEY, honeyLevel)
-                        .modelForState()
-                        .modelFile(model)
-                        .rotationY(yRot)
-                        .addModel();
-            }
-        }
     }
 
 

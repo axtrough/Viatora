@@ -1,7 +1,6 @@
-package net.raccoon.will.viatora.core.mixins.block;
+package net.raccoon.will.viatora.core.mixins;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -38,7 +37,7 @@ public class BeehiveBlockMixin {
 
         if (stack.is(Items.POTION) && blockState.getBlock() instanceof ColoredBeehiveBlock) {
             BlockState vanillaState = Blocks.BEEHIVE.defaultBlockState()
-                    .setValue(BeehiveBlock.FACING, blockState.getValue(BeehiveBlock.FACING).getOpposite())
+                    .setValue(BeehiveBlock.FACING, blockState.getValue(BeehiveBlock.FACING))
                     .setValue(BeehiveBlock.HONEY_LEVEL, blockState.getValue(BeehiveBlock.HONEY_LEVEL));
 
             if (level.getBlockEntity(pos) instanceof BeehiveBlockEntity coloredBeehive) {
@@ -90,43 +89,36 @@ public class BeehiveBlockMixin {
         };
 
         if (newState != null) {
-            boolean isVanillaBeehive = !(blockState.getBlock() instanceof ColoredBeehiveBlock);
-
-            if (isVanillaBeehive) {
-                newState = newState
-                        .setValue(BeehiveBlock.FACING, blockState.getValue(BeehiveBlock.FACING).getOpposite())
-                        .setValue(BeehiveBlock.HONEY_LEVEL, blockState.getValue(BeehiveBlock.HONEY_LEVEL));
-            } else {
-                newState = newState
-                        .setValue(BeehiveBlock.FACING, blockState.getValue(BeehiveBlock.FACING))
-                        .setValue(BeehiveBlock.HONEY_LEVEL, blockState.getValue(BeehiveBlock.HONEY_LEVEL));
-            }
-
-            if (level.getBlockEntity(pos) instanceof BeehiveBlockEntity ogBeeHive) {
-                CompoundTag nbt = ogBeeHive.saveWithFullMetadata(level.registryAccess());
-
-                level.removeBlockEntity(pos);
-                level.setBlock(pos, newState, 3);
-
-                BlockEntityType<ColoredBeehiveBlockEntity> type = VBlockEntities.BEEHIVE.get();
-                BlockEntity newBeeHiveBE = type.create(pos, newState);
-
-                if (newBeeHiveBE != null) {
-                    newBeeHiveBE.loadCustomOnly(nbt, level.registryAccess());
-                    level.setBlockEntity(newBeeHiveBE);
-
-                } else {
-                    level.setBlockAndUpdate(pos, newState);
-                }
-
-                if (!player.isCreative()) {
-                    stack.shrink(1);
-                }
-                level.playSound(player, pos, SoundEvents.DYE_USE, SoundSource.AMBIENT, 1F, 1F);
-                cir.setReturnValue(ItemInteractionResult.SUCCESS);
-            } else {
-                cir.setReturnValue(ItemInteractionResult.FAIL);
-            }
+            newState = newState
+                    .setValue(BeehiveBlock.FACING, blockState.getValue(BeehiveBlock.FACING))
+                    .setValue(BeehiveBlock.HONEY_LEVEL, blockState.getValue(BeehiveBlock.HONEY_LEVEL));
         }
+
+        if (level.getBlockEntity(pos) instanceof BeehiveBlockEntity oldBeehive) {
+            CompoundTag nbt = oldBeehive.saveWithFullMetadata(level.registryAccess());
+
+            level.removeBlockEntity(pos);
+            level.setBlock(pos, newState, 3);
+
+            BlockEntityType<ColoredBeehiveBlockEntity> type = VBlockEntities.BEEHIVE.get();
+            BlockEntity newBeehive = type.create(pos, newState);
+
+            if (newBeehive != null) {
+                newBeehive.loadCustomOnly(nbt, level.registryAccess());
+                level.setBlockEntity(newBeehive);
+
+            } else {
+                level.setBlockAndUpdate(pos, newState);
+            }
+
+            if (!player.isCreative()) {
+                stack.shrink(1);
+            }
+            level.playSound(player, pos, SoundEvents.DYE_USE, SoundSource.AMBIENT, 1F, 1F);
+            cir.setReturnValue(ItemInteractionResult.SUCCESS);
+        } else {
+            cir.setReturnValue(ItemInteractionResult.FAIL);
+        }
+
     }
 }

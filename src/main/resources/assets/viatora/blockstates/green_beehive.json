@@ -2,93 +2,93 @@
   "variants": {
     "facing=east,honey_level=0": {
       "model": "viatora:block/beehive/green_beehive",
-      "y": 270
+      "y": 90
     },
     "facing=east,honey_level=1": {
       "model": "viatora:block/beehive/green_beehive",
-      "y": 270
+      "y": 90
     },
     "facing=east,honey_level=2": {
       "model": "viatora:block/beehive/green_beehive",
-      "y": 270
+      "y": 90
     },
     "facing=east,honey_level=3": {
       "model": "viatora:block/beehive/green_beehive",
-      "y": 270
+      "y": 90
     },
     "facing=east,honey_level=4": {
       "model": "viatora:block/beehive/green_beehive",
-      "y": 270
+      "y": 90
     },
     "facing=east,honey_level=5": {
       "model": "viatora:block/beehive/green_beehive_honey",
-      "y": 270
+      "y": 90
     },
     "facing=north,honey_level=0": {
-      "model": "viatora:block/beehive/green_beehive",
-      "y": 180
+      "model": "viatora:block/beehive/green_beehive"
     },
     "facing=north,honey_level=1": {
-      "model": "viatora:block/beehive/green_beehive",
-      "y": 180
+      "model": "viatora:block/beehive/green_beehive"
     },
     "facing=north,honey_level=2": {
-      "model": "viatora:block/beehive/green_beehive",
-      "y": 180
+      "model": "viatora:block/beehive/green_beehive"
     },
     "facing=north,honey_level=3": {
-      "model": "viatora:block/beehive/green_beehive",
-      "y": 180
+      "model": "viatora:block/beehive/green_beehive"
     },
     "facing=north,honey_level=4": {
+      "model": "viatora:block/beehive/green_beehive"
+    },
+    "facing=north,honey_level=5": {
+      "model": "viatora:block/beehive/green_beehive_honey"
+    },
+    "facing=south,honey_level=0": {
       "model": "viatora:block/beehive/green_beehive",
       "y": 180
     },
-    "facing=north,honey_level=5": {
-      "model": "viatora:block/beehive/green_beehive_honey",
+    "facing=south,honey_level=1": {
+      "model": "viatora:block/beehive/green_beehive",
       "y": 180
     },
-    "facing=south,honey_level=0": {
-      "model": "viatora:block/beehive/green_beehive"
-    },
-    "facing=south,honey_level=1": {
-      "model": "viatora:block/beehive/green_beehive"
-    },
     "facing=south,honey_level=2": {
-      "model": "viatora:block/beehive/green_beehive"
+      "model": "viatora:block/beehive/green_beehive",
+      "y": 180
     },
     "facing=south,honey_level=3": {
-      "model": "viatora:block/beehive/green_beehive"
+      "model": "viatora:block/beehive/green_beehive",
+      "y": 180
     },
     "facing=south,honey_level=4": {
-      "model": "viatora:block/beehive/green_beehive"
+      "model": "viatora:block/beehive/green_beehive",
+      "y": 180
     },
     "facing=south,honey_level=5": {
-      "model": "viatora:block/beehive/green_beehive_honey"
+      "model": "viatora:block/beehive/green_beehive_honey",
+      "y": 180
     },
     "facing=west,honey_level=0": {
       "model": "viatora:block/beehive/green_beehive",
-      "y": 90
+      "y": 270
     },
     "facing=west,honey_level=1": {
       "model": "viatora:block/beehive/green_beehive",
-      "y": 90
+      "y": 270
     },
     "facing=west,honey_level=2": {
       "model": "viatora:block/beehive/green_beehive",
-      "y": 90
+      "y": 270
     },
     "facing=west,honey_level=3": {
       "model": "viatora:block/beehive/green_beehive",
-      "y": 90
+      "y": 270
     },
     "facing=west,honey_level=4": {
       "model": "viatora:block/beehive/green_beehive",
-      "y": 90
+      "y": 270
     },
     "facing=west,honey_level=5": {
       "model": "viatora:block/beehive/green_beehive_honey",
-      "y": 90
+      "y": 270
     }
   }
 }

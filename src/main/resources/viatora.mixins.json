@@ -5,9 +5,12 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "viatora.refmap.json",
   "mixins": [
-    "block.BeehiveBlockMixin"
+    "BaseAshSmokeParticle",
+    "BeehiveBlockMixin"
   ],
   "client": [
+    "ParticleAccessor",
+    "SkinManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
