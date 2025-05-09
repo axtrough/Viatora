@@ -5,14 +5,9 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "viatora.refmap.json",
   "mixins": [
-    "block.BeehiveBlockEntityMixin",
-    "block.BeehiveBlockMixin",
-    "entity.AbstractHorseMixin",
-    "entity.CamelMixin",
-    "entity.TameableAnimalMixin"
+    "block.BeehiveBlockMixin"
   ],
   "client": [
-    "entity.CamelRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

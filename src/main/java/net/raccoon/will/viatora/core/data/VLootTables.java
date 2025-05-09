@@ -26,9 +26,22 @@ public class VLootTables extends BlockLootSubProvider {
     @Override
     protected void generate() { //LootTables
         this.dropSelf(VBlocks.RED_BEEHIVE.get());
-
-
-
+        this.dropSelf(VBlocks.ORANGE_BEEHIVE.get());
+        this.dropSelf(VBlocks.YELLOW_BEEHIVE.get());
+        this.dropSelf(VBlocks.LIME_BEEHIVE.get());
+        this.dropSelf(VBlocks.GREEN_BEEHIVE.get());
+        this.dropSelf(VBlocks.CYAN_BEEHIVE.get());
+        this.dropSelf(VBlocks.LIGHT_BLUE_BEEHIVE.get());
+        this.dropSelf(VBlocks.BLUE_BEEHIVE.get());
+        this.dropSelf(VBlocks.PURPLE_BEEHIVE.get());
+        this.dropSelf(VBlocks.MAGENTA_BEEHIVE.get());
+        this.dropSelf(VBlocks.PINK_BEEHIVE.get());
+        this.dropSelf(VBlocks.WHITE_BEEHIVE.get());
+        this.dropSelf(VBlocks.LIGHT_GRAY_BEEHIVE.get());
+        this.dropSelf(VBlocks.GRAY_BEEHIVE.get());
+        this.dropSelf(VBlocks.BLACK_BEEHIVE.get());
+        this.dropSelf(VBlocks.BROWN_BEEHIVE.get());
+        this.dropSelf(VBlocks.COLORED_BEEHIVE.get());
     }
 
     //SPACING

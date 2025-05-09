@@ -30,7 +30,6 @@ public class DataGen {
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(VLootTables::new, LootContextParamSets.BLOCK)), lookupProvider));
 
-
         generator.addProvider(event.includeClient(), new VBlockStates(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new VItemModels(packOutput, existingFileHelper));
     }

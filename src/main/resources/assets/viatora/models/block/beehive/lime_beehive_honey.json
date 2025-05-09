@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "viatora:block/beehive/lime_beehive/lime_beehive_end",
+    "front": "viatora:block/beehive/lime_beehive/lime_beehive_front",
+    "particle": "viatora:block/beehive/lime_beehive/lime_beehive_side",
+    "side": "viatora:block/beehive/lime_beehive/lime_beehive_side",
+    "top": "viatora:block/beehive/lime_beehive/lime_beehive_end"
+  }
+}

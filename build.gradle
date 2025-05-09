@@ -102,6 +102,7 @@ dependencies {
     runtimeOnly("dev.emi:emi-neoforge:${emi_version}")
     runtimeOnly("maven.modrinth:sodium:${sodium_version}")
     runtimeOnly("maven.modrinth:iris:${iris_version}")
+    runtimeOnly("maven.modrinth:jade:${jade_version}")
     runtimeOnly("curse.maven:worldedit-225608:5830452")
 }
 
