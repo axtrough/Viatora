@@ -2,7 +2,7 @@
   "parent": "minecraft:block/orientable_with_bottom",
   "textures": {
     "bottom": "viatora:block/beehive/brown_beehive/brown_beehive_end",
-    "front": "viatora:block/beehive/brown_beehive/brown_beehive_front",
+    "front": "viatora:block/beehive/brown_beehive/brown_beehive_front_honey",
     "particle": "viatora:block/beehive/brown_beehive/brown_beehive_side",
     "side": "viatora:block/beehive/brown_beehive/brown_beehive_side",
     "top": "viatora:block/beehive/brown_beehive/brown_beehive_end"
