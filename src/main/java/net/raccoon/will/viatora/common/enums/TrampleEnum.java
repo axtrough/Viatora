@@ -14,19 +14,19 @@ import net.raccoon.will.viatora.ViatoraConfig;
 
 import java.util.function.Function;
 
+@SuppressWarnings("deprecation")
 public enum TrampleEnum {
     FEATHER_FALLING((entity) -> {
         if (entity instanceof LivingEntity livingEntity) {
             for (ItemStack itemStack : livingEntity.getArmorSlots()) {
                 if (itemStack.getItem() instanceof ArmorItem armorItem) {
                     if(armorItem.getEquipmentSlot() == EquipmentSlot.FEET) {
-                        if (livingEntity.level().registryAccess() != null) {
-                            HolderLookup.RegistryLookup<Enchantment> lookup =
-                                    livingEntity.level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
-                            if (EnchantmentHelper.getItemEnchantmentLevel(lookup.getOrThrow(Enchantments.FEATHER_FALLING), itemStack)
-                                    >= ViatoraConfig.FEATHER_FALLING_LEVEL.get()) {
-                                return true;
-                            }
+                        livingEntity.level().registryAccess();
+                        HolderLookup.RegistryLookup<Enchantment> lookup =
+                                livingEntity.level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
+                        if (EnchantmentHelper.getItemEnchantmentLevel(lookup.getOrThrow(Enchantments.FEATHER_FALLING), itemStack)
+                                >= ViatoraConfig.FEATHER_FALLING_LEVEL.get()) {
+                            return true;
                         }
                     }
                 }
