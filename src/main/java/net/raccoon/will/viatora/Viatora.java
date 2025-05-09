@@ -13,10 +13,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.raccoon.will.viatora.core.registry.VBlockEntities;
-import net.raccoon.will.viatora.core.registry.VBlocks;
-import net.raccoon.will.viatora.core.registry.VItems;
-import net.raccoon.will.viatora.core.registry.ViatoraPoi;
+import net.raccoon.will.viatora.core.registry.*;
 import org.slf4j.Logger;
 
 @Mod(Viatora.MODID)
@@ -32,6 +29,7 @@ public class Viatora {
 
         VItems.register(modEventBus);
         VBlocks.register(modEventBus);
+        VCreativeTab.register(modEventBus);
         VBlockEntities.register(modEventBus);
         ViatoraPoi.POI_TYPES.register(modEventBus);
     }

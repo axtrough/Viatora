@@ -38,5 +38,4 @@ public class ViatoraPoi {
                     .collect(Collectors.toSet()),
             0, 1
     ));
-
 }

@@ -45,7 +45,6 @@ public class VBlockStates extends BlockStateProvider {
         String baseModelName = colorName + "_beehive";
         String honeyModelName = colorName + "_beehive_honey";
 
-        // Get model references
         ModelFile baseModel = models().getExistingFile(modLoc("block/beehive/" + baseModelName));
         ModelFile honeyModel = models().getExistingFile(modLoc("block/beehive/" + honeyModelName));
 

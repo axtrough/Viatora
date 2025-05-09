@@ -21,13 +21,13 @@ public class ColoredBeehiveBlock extends BeehiveBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return VBlockEntities.COLORED_BEEHIVE_BE.get().create(pos, state);
+        return VBlockEntities.BEEHIVE.get().create(pos, state);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return level.isClientSide ? null : createTickerHelper(type, VBlockEntities.COLORED_BEEHIVE_BE.get(), BeehiveBlockEntity::serverTick);
+        return level.isClientSide ? null : createTickerHelper(type, VBlockEntities.BEEHIVE.get(), BeehiveBlockEntity::serverTick);
     }
 
     @Override

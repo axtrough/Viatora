@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 public class VBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, Viatora.MODID);
 
-    public static final Supplier<BlockEntityType<ColoredBeehiveBlockEntity>> COLORED_BEEHIVE_BE = BLOCK_ENTITIES.register("colored_beehive_be",
+    public static final Supplier<BlockEntityType<ColoredBeehiveBlockEntity>> BEEHIVE = BLOCK_ENTITIES.register("beehive",
             () -> BlockEntityType.Builder.of(ColoredBeehiveBlockEntity::new,
                     VBlocks.RED_BEEHIVE.get(),
                     VBlocks.ORANGE_BEEHIVE.get(),

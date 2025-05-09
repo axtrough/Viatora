@@ -16,6 +16,6 @@ public class ColoredBeehiveBlockEntity extends BeehiveBlockEntity {
     @NotNull
     @Override
     public BlockEntityType<?> getType() {
-        return VBlockEntities.COLORED_BEEHIVE_BE.get();
+        return VBlockEntities.BEEHIVE.get();
     }
 }

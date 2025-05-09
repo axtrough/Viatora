@@ -13,13 +13,13 @@ public class ViatoraConfig {
     public static final ModConfigSpec.IntValue FEATHER_FALLING_LEVEL;
 
     static {
-        BUILDER.comment("Trample Stopper Configuration");
+        BUILDER.comment("Viatora Config");
 
         TYPE = BUILDER.comment("Trample prevention type")
                 .defineEnum("type", TrampleEnum.FEATHER_FALLING,
                         Arrays.asList(TrampleEnum.values()));
 
-        FEATHER_FALLING_LEVEL = BUILDER.comment("Minimum Feather Falling level required to prevent trampling")
+        FEATHER_FALLING_LEVEL = BUILDER.comment("Min Feather Falling level required to be unable to trample")
                 .defineInRange("featherFallingLevel", 1, 1, 4);
 
         SPEC = BUILDER.build();
