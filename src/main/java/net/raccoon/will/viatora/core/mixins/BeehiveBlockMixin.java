@@ -68,6 +68,32 @@ public class BeehiveBlockMixin {
         DyeColor dyeColor = dyeItem.getDyeColor();
         if (dyeColor == null) return;
 
+        if (blockState.getBlock() instanceof ColoredBeehiveBlock currentBlock) {
+            boolean isSameColor = switch (dyeColor) {
+                case RED -> currentBlock == VBlocks.RED_BEEHIVE.get();
+                case ORANGE -> currentBlock == VBlocks.ORANGE_BEEHIVE.get();
+                case YELLOW -> currentBlock == VBlocks.YELLOW_BEEHIVE.get();
+                case LIME -> currentBlock == VBlocks.LIME_BEEHIVE.get();
+                case GREEN -> currentBlock == VBlocks.GREEN_BEEHIVE.get();
+                case CYAN -> currentBlock == VBlocks.CYAN_BEEHIVE.get();
+                case LIGHT_BLUE -> currentBlock == VBlocks.LIGHT_BLUE_BEEHIVE.get();
+                case BLUE -> currentBlock == VBlocks.BLUE_BEEHIVE.get();
+                case PURPLE -> currentBlock == VBlocks.PURPLE_BEEHIVE.get();
+                case MAGENTA -> currentBlock == VBlocks.MAGENTA_BEEHIVE.get();
+                case PINK -> currentBlock == VBlocks.PINK_BEEHIVE.get();
+                case WHITE -> currentBlock == VBlocks.WHITE_BEEHIVE.get();
+                case LIGHT_GRAY -> currentBlock == VBlocks.LIGHT_GRAY_BEEHIVE.get();
+                case GRAY -> currentBlock == VBlocks.GRAY_BEEHIVE.get();
+                case BLACK -> currentBlock == VBlocks.BLACK_BEEHIVE.get();
+                case BROWN -> currentBlock == VBlocks.BROWN_BEEHIVE.get();
+            };
+            //no more consuming dye for no reason. the beehives are hungy
+            if (isSameColor) {
+                cir.setReturnValue(ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION);
+                return;
+            }
+        }
+
         BlockState newState = switch (dyeColor) {
             case RED -> VBlocks.RED_BEEHIVE.get().defaultBlockState();
             case ORANGE -> VBlocks.ORANGE_BEEHIVE.get().defaultBlockState();
