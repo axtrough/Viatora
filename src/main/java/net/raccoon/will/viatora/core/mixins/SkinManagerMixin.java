@@ -9,32 +9,34 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Set;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 @Mixin(SkinManager.class)
 public final class SkinManagerMixin {
 
-    private static final Set<UUID> CAPED_PLAYERS = Set.of(
-            UUID.fromString("1fb0e60d-80ac-4f32-a8af-26153cfa7e07")
+    private static final Map<UUID, ResourceLocation> PLAYER_CAPES = Map.ofEntries(
+            Map.entry(UUID.fromString("1fb0e60d-80ac-4f32-a8af-26153cfa7e07"), //will
+                    ResourceLocation.fromNamespaceAndPath("viatora", "textures/cape/viatora_cape.png")),
+            Map.entry(UUID.fromString("ae0613d2-f9bb-44a6-8236-1f648cb99a6d"), //faz
+                    ResourceLocation.fromNamespaceAndPath("viatora", "textures/cape/viatora_cape.png"))
     );
-
-    private static final ResourceLocation CAPE_TEXTURE = ResourceLocation.fromNamespaceAndPath("viatora", "textures/cape/viatora_cape.png");
 
     @Inject(method = "registerTextures", at = @At("RETURN"), cancellable = true)
     private void registerCapeForSpecificPlayers(UUID uuid, MinecraftProfileTextures profileTextures,
                                                 CallbackInfoReturnable<CompletableFuture<PlayerSkin>> info) {
-        if (CAPED_PLAYERS.contains(uuid)) {
+        if (PLAYER_CAPES.containsKey(uuid)) {
             var newPlayerSkin = info.getReturnValue();
+            ResourceLocation capeTexture = PLAYER_CAPES.get(uuid);
 
             info.setReturnValue(newPlayerSkin.thenApply(playerSkin -> {
                 if (playerSkin.capeTexture() == null) {
                     return new PlayerSkin(
                             playerSkin.texture(),
                             playerSkin.textureUrl(),
-                            CAPE_TEXTURE,
-                            CAPE_TEXTURE,
+                            capeTexture,
+                            capeTexture,
                             playerSkin.model(),
                             playerSkin.secure()
                     );
