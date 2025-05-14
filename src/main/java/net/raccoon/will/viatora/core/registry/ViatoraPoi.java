@@ -16,26 +16,26 @@ public class ViatoraPoi {
 
     public static final DeferredHolder<PoiType, PoiType> BEEHIVE = POI_TYPES.register("beehive", () ->
             new PoiType(
-            Stream.of(
-                            RED_BEEHIVE.get(),
-                            ORANGE_BEEHIVE.get(),
-                            YELLOW_BEEHIVE.get(),
-                            LIME_BEEHIVE.get(),
-                            GREEN_BEEHIVE.get(),
-                            CYAN_BEEHIVE.get(),
-                            LIGHT_BLUE_BEEHIVE.get(),
-                            BLUE_BEEHIVE.get(),
-                            PURPLE_BEEHIVE.get(),
-                            MAGENTA_BEEHIVE.get(),
-                            PINK_BEEHIVE.get(),
-                            WHITE_BEEHIVE.get(),
-                            LIGHT_GRAY_BEEHIVE.get(),
-                            GRAY_BEEHIVE.get(),
-                            BLACK_BEEHIVE.get(),
-                            BROWN_BEEHIVE.get()
-                    )
-                    .flatMap(block -> block.getStateDefinition().getPossibleStates().stream())
-                    .collect(Collectors.toSet()),
-            0, 1
-    ));
+                    Stream.of(
+                                    RED_BEEHIVE.get(),
+                                    ORANGE_BEEHIVE.get(),
+                                    YELLOW_BEEHIVE.get(),
+                                    LIME_BEEHIVE.get(),
+                                    GREEN_BEEHIVE.get(),
+                                    CYAN_BEEHIVE.get(),
+                                    LIGHT_BLUE_BEEHIVE.get(),
+                                    BLUE_BEEHIVE.get(),
+                                    PURPLE_BEEHIVE.get(),
+                                    MAGENTA_BEEHIVE.get(),
+                                    PINK_BEEHIVE.get(),
+                                    WHITE_BEEHIVE.get(),
+                                    LIGHT_GRAY_BEEHIVE.get(),
+                                    GRAY_BEEHIVE.get(),
+                                    BLACK_BEEHIVE.get(),
+                                    BROWN_BEEHIVE.get()
+                            )
+                            .flatMap(block -> block.getStateDefinition().getPossibleStates().stream())
+                            .collect(Collectors.toSet()),
+                    0, 1
+            ));
 }

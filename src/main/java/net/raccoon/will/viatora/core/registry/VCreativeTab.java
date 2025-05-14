@@ -38,9 +38,6 @@ public class VCreativeTab {
                         output.accept(VBlocks.PINK_BEEHIVE);
 
 
-
-
-
                     }).build());
 
     public static void register(IEventBus eventBus) {

@@ -9,7 +9,7 @@ public class VItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Viatora.MODID);
 
 
-
-    public static void register(IEventBus eventBus) {ITEMS.register(eventBus);
+    public static void register(IEventBus eventBus) {
+        ITEMS.register(eventBus);
     }
 }

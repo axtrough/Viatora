@@ -37,9 +37,17 @@ public class Viatora {
     private void commonSetup(final FMLCommonSetupEvent event) {
 
     }
+
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
 
+    }
+
+    @SubscribeEvent
+    public void onFarmlandTrample(BlockEvent.FarmlandTrampleEvent event) {
+        if (ViatoraConfig.TYPE.get().getFunction().apply(event.getEntity())) {
+            event.setCanceled(true);
+        }
     }
 
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -47,13 +55,6 @@ public class Viatora {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
-        }
-    }
-
-    @SubscribeEvent
-    public void onFarmlandTrample(BlockEvent.FarmlandTrampleEvent event) {
-        if (ViatoraConfig.TYPE.get().getFunction().apply(event.getEntity())) {
-            event.setCanceled(true);
         }
     }
 }

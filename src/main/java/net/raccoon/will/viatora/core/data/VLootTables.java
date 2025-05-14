@@ -53,9 +53,9 @@ public class VLootTables extends BlockLootSubProvider {
 
     //SPACING
 
-    protected LootTable.Builder beehiveDrop (Block block) {
+    protected LootTable.Builder beehiveDrop(Block block) {
         return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-                .add(((LootPoolSingletonContainer.Builder<?>)LootItem.lootTableItem(block).when(this.hasSilkTouch()))
+                .add(((LootPoolSingletonContainer.Builder<?>) LootItem.lootTableItem(block).when(this.hasSilkTouch()))
                         .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
                                 .include(DataComponents.BEES)).apply(CopyBlockState.copyState(block)
                                 .copy(BeehiveBlock.HONEY_LEVEL)).otherwise(LootItem.lootTableItem(block))));
@@ -68,7 +68,8 @@ public class VLootTables extends BlockLootSubProvider {
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
                         .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
     }
-        @Override
+
+    @Override
     protected Iterable<Block> getKnownBlocks() {
         return VBlocks.BLOCKS.getEntries().stream().map(Holder::value)::iterator;
     }

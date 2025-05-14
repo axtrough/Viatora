@@ -20,7 +20,7 @@ public enum TrampleEnum {
         if (entity instanceof LivingEntity livingEntity) {
             for (ItemStack itemStack : livingEntity.getArmorSlots()) {
                 if (itemStack.getItem() instanceof ArmorItem armorItem) {
-                    if(armorItem.getEquipmentSlot() == EquipmentSlot.FEET) {
+                    if (armorItem.getEquipmentSlot() == EquipmentSlot.FEET) {
                         livingEntity.level().registryAccess();
                         HolderLookup.RegistryLookup<Enchantment> lookup =
                                 livingEntity.level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);

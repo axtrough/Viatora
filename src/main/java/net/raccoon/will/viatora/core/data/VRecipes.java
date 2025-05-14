@@ -2,7 +2,10 @@ package net.raccoon.will.viatora.core.data;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.*;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
@@ -17,23 +20,17 @@ public class VRecipes extends RecipeProvider implements IConditionBuilder {
         super(pOutput, pRegistries);
     }
 
-    @Override
-    protected void buildRecipes(@NotNull RecipeOutput recipeOutput) { //Recipes
-
-
-    }
-
-    //SPACING
-
-    //SPACING
-
-    //SPACING
-
     protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory category, ItemLike pResult,
                                       float pExperience, int pCookingTIme, String pGroup) {
         oreCooking(recipeOutput, RecipeSerializer.SMELTING_RECIPE, SmeltingRecipe::new, pIngredients, category, pResult,
                 pExperience, pCookingTIme, pGroup, "_from_smelting");
     }
+
+    //SPACING
+
+    //SPACING
+
+    //SPACING
 
     protected static void oreBlasting(RecipeOutput pRecipeOutput, List<ItemLike> pIngredients, RecipeCategory category, ItemLike pResult,
                                       float pExperience, int pCookingTime, String pGroup) {
@@ -47,6 +44,12 @@ public class VRecipes extends RecipeProvider implements IConditionBuilder {
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), category, pResult, pExperience, pCookingTime, pCookingSerializer, factory).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(recipeOutput, Viatora.MODID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
+    }
+
+    @Override
+    protected void buildRecipes(@NotNull RecipeOutput recipeOutput) { //Recipes
+
+
     }
 }
 

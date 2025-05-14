@@ -6,12 +6,11 @@ import net.raccoon.will.viatora.common.enums.TrampleEnum;
 import java.util.Arrays;
 
 public class ViatoraConfig {
-    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
     public static final ModConfigSpec SPEC;
-
     public static final ModConfigSpec.EnumValue<TrampleEnum> TYPE;
     public static final ModConfigSpec.IntValue FEATHER_FALLING_LEVEL;
     public static final ModConfigSpec.BooleanValue VANILLA_STYLED_DYED_BEEHIVES;
+    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
     static {
         BUILDER.comment("Viatora Config");
