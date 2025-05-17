@@ -10,6 +10,7 @@ public class ViatoraConfig {
     public static final ModConfigSpec.EnumValue<TrampleEnum> TYPE;
     public static final ModConfigSpec.IntValue FEATHER_FALLING_LEVEL;
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    public static final ModConfigSpec.BooleanValue THROWABLE_HIT_ENABLED;
 
     static {
         BUILDER.comment("Viatora Config");
@@ -18,10 +19,12 @@ public class ViatoraConfig {
                 .defineEnum("type", TrampleEnum.FEATHER_FALLING,
                         Arrays.asList(TrampleEnum.values()));
 
+        THROWABLE_HIT_ENABLED = BUILDER.comment("Throwables deal knockback")
+                .define("throwableHitEnabled", true);
+
         FEATHER_FALLING_LEVEL = BUILDER.comment("Feather falling level required to trample")
                 .defineInRange("featherFallingLevel", 1, 1, 4);
 
         SPEC = BUILDER.build();
     }
 }
-

@@ -5,7 +5,9 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "viatora.refmap.json",
   "mixins": [
-    "BeehiveBlockMixin"
+    "BeehiveBlockMixin",
+    "SnowballMixin",
+    "ThrownEggMixin"
   ],
   "client": [
     "SkinManagerMixin"
