@@ -21,8 +21,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.raccoon.will.viatora.common.block.ColoredBeehiveBlock;
 import net.raccoon.will.viatora.common.block.ColoredBeehiveBlockEntity;
-import net.raccoon.will.viatora.core.registry.VBlockEntities;
-import net.raccoon.will.viatora.core.registry.VBlocks;
+import net.raccoon.will.viatora.registry.VBlockEntities;
+import net.raccoon.will.viatora.registry.VBlocks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -58,6 +58,7 @@ public class BeehiveBlockMixin {
                 }
 
                 level.playSound(player, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.AMBIENT, 1F, 1F);
+                level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.AMBIENT, 1F, 1F);
                 cir.setReturnValue(ItemInteractionResult.SUCCESS);
             }
             return;
@@ -141,6 +142,7 @@ public class BeehiveBlockMixin {
                 stack.shrink(1);
             }
             level.playSound(player, pos, SoundEvents.DYE_USE, SoundSource.AMBIENT, 1F, 1F);
+            level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.AMBIENT, 1F, 1F);
             cir.setReturnValue(ItemInteractionResult.SUCCESS);
         } else {
             cir.setReturnValue(ItemInteractionResult.FAIL);
