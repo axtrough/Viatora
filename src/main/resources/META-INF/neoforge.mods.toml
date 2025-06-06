@@ -4,26 +4,26 @@ loaderVersion = "4,"
 license = "MIT"
 
 [[mods]]
-modId = "viatora"
-version = "0.1.0+1.21.1-alpha"
-displayName = "Viatora"
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "${mod_name}"
 
-authors = "axtrough/axtro"
-description = '''funny mod horaaay'''
+authors = "${mod_authors}"
+description = '''${mod_description}'''
 logoFile = "viatora.png"
-credits = "DinoFazbearYT"
+credits = "${mod_credits}"
 
 [[mixins]]
 config = "viatora.mixins.json"
 
-[[dependencies."viatora"]]
+[[dependencies.viatora]]
 modId = "neoforge"
 type = "required"
 versionRange = "21,"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies."viatora"]]
+[[dependencies.viatora]]
 modId = "minecraft"
 type = "required"
 versionRange = "1.21.1,1.22"
