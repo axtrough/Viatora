@@ -21,7 +21,7 @@ import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.raccoon.will.viatora.core.registry.VBlocks;
+import net.raccoon.will.viatora.registry.VBlocks;
 
 import java.util.Set;
 
@@ -59,14 +59,6 @@ public class VLootTables extends BlockLootSubProvider {
                         .apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
                                 .include(DataComponents.BEES)).apply(CopyBlockState.copyState(block)
                                 .copy(BeehiveBlock.HONEY_LEVEL)).otherwise(LootItem.lootTableItem(block))));
-    }
-
-    protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {
-        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        return this.createSilkTouchDispatchTable(pBlock, this.applyExplosionDecay(pBlock,
-                LootItem.lootTableItem(item)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
-                        .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))));
     }
 
     @Override

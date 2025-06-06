@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.raccoon.will.viatora.Viatora;
-import net.raccoon.will.viatora.core.registry.VBlocks;
+import net.raccoon.will.viatora.registry.VBlocks;
 
 public class VItemModels extends ItemModelProvider {
     public VItemModels(PackOutput output, ExistingFileHelper existingFileHelper) {
