@@ -5,12 +5,13 @@ license = "MIT"
 
 [[mods]]
 modId = "viatora"
-version = "0.1.0"
+version = "0.1.0+1.21.1-alpha"
 displayName = "Viatora"
 
-authors = "me"
+authors = "axtrough/axtro"
 description = '''funny mod horaaay'''
 logoFile = "viatora.png"
+credits = "DinoFazbearYT"
 
 [[mixins]]
 config = "viatora.mixins.json"
