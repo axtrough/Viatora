@@ -1,4 +1,4 @@
-package net.raccoon.will.viatora.core.registry;
+package net.raccoon.will.viatora.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;

@@ -1,4 +1,4 @@
-package net.raccoon.will.viatora.core.registry;
+package net.raccoon.will.viatora.registry;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;

@@ -10,6 +10,7 @@ displayName = "Viatora"
 
 authors = "me"
 description = '''funny mod horaaay'''
+logoFile = "viatora.png"
 
 [[mixins]]
 config = "viatora.mixins.json"
@@ -27,4 +28,3 @@ type = "required"
 versionRange = "1.21.1,1.22"
 ordering = "NONE"
 side = "BOTH"
-

@@ -1,4 +1,4 @@
-package net.raccoon.will.viatora.core.registry;
+package net.raccoon.will.viatora.registry;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -56,4 +56,3 @@ public class VBlocks {
         BLOCKS.register(eventBus);
     }
 }
-

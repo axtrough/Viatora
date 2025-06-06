@@ -1,4 +1,4 @@
-package net.raccoon.will.viatora.core.registry;
+package net.raccoon.will.viatora.registry;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
@@ -9,7 +9,7 @@ import net.raccoon.will.viatora.Viatora;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static net.raccoon.will.viatora.core.registry.VBlocks.*;
+import static net.raccoon.will.viatora.registry.VBlocks.*;
 
 public class ViatoraPoi {
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, Viatora.MODID);

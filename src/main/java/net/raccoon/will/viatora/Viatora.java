@@ -13,7 +13,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.raccoon.will.viatora.core.registry.*;
+import net.raccoon.will.viatora.registry.*;
 import org.slf4j.Logger;
 
 @Mod(Viatora.MODID)
