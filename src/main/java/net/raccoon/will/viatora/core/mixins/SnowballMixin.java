@@ -28,7 +28,7 @@ public abstract class SnowballMixin extends Projectile {
 
         if (hit instanceof Player player) {
             if (ViatoraConfig.THROWABLE_HIT_ENABLED.get()) {
-                player.playSound(SoundEvents.ARROW_HIT_PLAYER);
+                player.playSound(SoundEvents.ARROW_HIT_PLAYER, 0.18F, 0.45F);
                 player.hurt(this.damageSources().thrown(this, this.getOwner()), 0.01F);
             }
         }
