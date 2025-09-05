@@ -1,4 +1,4 @@
-package net.raccoon.will.viatora.registry;
+package net.raccoon.will.viatora.core.registry;
 
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -30,7 +30,6 @@ public class VBlockEntities {
                     VBlocks.GRAY_BEEHIVE.get(),
                     VBlocks.BLACK_BEEHIVE.get(),
                     VBlocks.BROWN_BEEHIVE.get(),
-
                     VBlocks.COLORED_BEEHIVE.get()).build(null));
 
     public static void register(IEventBus eventBus) {

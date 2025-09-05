@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.raccoon.will.viatora.Viatora;
-import net.raccoon.will.viatora.registry.VBlocks;
+import net.raccoon.will.viatora.core.registry.VBlocks;
 
 public class VItemModels extends ItemModelProvider {
     public VItemModels(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -15,28 +15,28 @@ public class VItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() { //ItemModels
-        blockItem(VBlocks.RED_BEEHIVE.get(), "red");
-        blockItem(VBlocks.ORANGE_BEEHIVE.get(), "orange");
-        blockItem(VBlocks.YELLOW_BEEHIVE.get(), "yellow");
-        blockItem(VBlocks.LIME_BEEHIVE.get(), "lime");
-        blockItem(VBlocks.GREEN_BEEHIVE.get(), "green");
-        blockItem(VBlocks.CYAN_BEEHIVE.get(), "cyan");
-        blockItem(VBlocks.LIGHT_BLUE_BEEHIVE.get(), "light_blue");
-        blockItem(VBlocks.BLUE_BEEHIVE.get(), "blue");
-        blockItem(VBlocks.PURPLE_BEEHIVE.get(), "purple");
-        blockItem(VBlocks.MAGENTA_BEEHIVE.get(), "magenta");
-        blockItem(VBlocks.PINK_BEEHIVE.get(), "pink");
-        blockItem(VBlocks.WHITE_BEEHIVE.get(), "white");
-        blockItem(VBlocks.LIGHT_GRAY_BEEHIVE.get(), "light_gray");
-        blockItem(VBlocks.GRAY_BEEHIVE.get(), "gray");
-        blockItem(VBlocks.BLACK_BEEHIVE.get(), "black");
-        blockItem(VBlocks.BROWN_BEEHIVE.get(), "brown");
+        beehiveItem(VBlocks.RED_BEEHIVE.get(), "red");
+        beehiveItem(VBlocks.ORANGE_BEEHIVE.get(), "orange");
+        beehiveItem(VBlocks.YELLOW_BEEHIVE.get(), "yellow");
+        beehiveItem(VBlocks.LIME_BEEHIVE.get(), "lime");
+        beehiveItem(VBlocks.GREEN_BEEHIVE.get(), "green");
+        beehiveItem(VBlocks.CYAN_BEEHIVE.get(), "cyan");
+        beehiveItem(VBlocks.LIGHT_BLUE_BEEHIVE.get(), "light_blue");
+        beehiveItem(VBlocks.BLUE_BEEHIVE.get(), "blue");
+        beehiveItem(VBlocks.PURPLE_BEEHIVE.get(), "purple");
+        beehiveItem(VBlocks.MAGENTA_BEEHIVE.get(), "magenta");
+        beehiveItem(VBlocks.PINK_BEEHIVE.get(), "pink");
+        beehiveItem(VBlocks.WHITE_BEEHIVE.get(), "white");
+        beehiveItem(VBlocks.LIGHT_GRAY_BEEHIVE.get(), "light_gray");
+        beehiveItem(VBlocks.GRAY_BEEHIVE.get(), "gray");
+        beehiveItem(VBlocks.BLACK_BEEHIVE.get(), "black");
+        beehiveItem(VBlocks.BROWN_BEEHIVE.get(), "brown");
 
     }
 
     //SPACING
 
-    private void blockItem(Block block, String colorName) {
+    private void beehiveItem(Block block, String colorName) {
         String modelPath = "block/beehive/" + colorName + "_beehive";
         withExistingParent(BuiltInRegistries.BLOCK.getKey(block).getPath(), modLoc(modelPath));
     }

@@ -1,4 +1,4 @@
-package net.raccoon.will.viatora.registry;
+package net.raccoon.will.viatora.core.misc;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.raccoon.will.viatora.Viatora;
+import net.raccoon.will.viatora.core.registry.VBlocks;
 
 import java.util.function.Supplier;
 

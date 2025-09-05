@@ -25,7 +25,7 @@ public class DataGen {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new VRecipes(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new VRecipeProv(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(VLootTables::new, LootContextParamSets.BLOCK)), lookupProvider));
 
