@@ -10,9 +10,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.raccoon.will.viatora.ViatoraConfig;
 
 import java.util.function.Function;
+
+import static net.raccoon.will.viatora.Viatora.config;
+
+//TODO rewrite for better config implementation & readability
 
 @SuppressWarnings("deprecation")
 public enum TrampleEnum {
@@ -25,7 +28,7 @@ public enum TrampleEnum {
                         HolderLookup.RegistryLookup<Enchantment> lookup =
                                 livingEntity.level().registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
                         if (EnchantmentHelper.getItemEnchantmentLevel(lookup.getOrThrow(Enchantments.FEATHER_FALLING), itemStack)
-                                >= ViatoraConfig.FEATHER_FALLING_LEVEL.get()) {
+                                >= config.TrampleLevel) {
                             return true;
                         }
                     }

@@ -1,13 +1,12 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.raccoon.will.viatora.core.mixins",
+  "package": "net.raccoon.will.viatora.core.mixin",
   "compatibilityLevel": "JAVA_8",
   "refmap": "viatora.refmap.json",
   "mixins": [
     "BeehiveBlockMixin",
-    "SnowballMixin",
-    "ThrownEggMixin"
+    "ProjectileMixin"
   ],
   "client": [
     "SkinManagerMixin"

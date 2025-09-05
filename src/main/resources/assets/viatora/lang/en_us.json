@@ -1,4 +1,5 @@
 {
+  //Blocks
   "block.viatora.red_beehive": "Red Beehive",
   "block.viatora.orange_beehive": "Orange Beehive",
   "block.viatora.yellow_beehive": "Yellow Beehive",
@@ -15,5 +16,13 @@
   "block.viatora.gray_beehive": "Gray Beehive",
   "block.viatora.black_beehive": "Black Beehive",
   "block.viatora.brown_beehive": "Brown Beehive",
-  "creativetab.viatora.viatora_tab": "Viatora"
+
+  //Misc
+  "creativetab.viatora.viatora_tab": "Viatora",
+
+
+  //Config
+  "text.autoconfig.viatora.title": "Viatora Config",
+  "text.autoconfig.viatora.option.ThrowablesHit": "Throwables Deal Knockback",
+  "text.autoconfig.viatora.option.TrampleLevel": "Trample Feather Falling Level"
 }
