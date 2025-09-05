@@ -13,6 +13,7 @@ repositories {
     maven { url "https://api.modrinth.com/maven" }
     maven { url "https://maven.terraformersmc.com/" }
     maven { url "https://cursemaven.com" }
+    maven { url "https://maven.blamejared.com/"}
 }
 
 base {
@@ -105,12 +106,18 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
-    runtimeOnly("dev.emi:emi-neoforge:${emi_version}")
     runtimeOnly("maven.modrinth:sodium:${sodium_version}")
     runtimeOnly("maven.modrinth:iris:${iris_version}")
-    runtimeOnly("maven.modrinth:jade:${jade_version}")
+    //runtimeOnly("maven.modrinth:embeddium:${embeddium_version}")
+
     runtimeOnly("curse.maven:worldedit-225608:5830452")
-    runtimeOnly("curse.maven:configured-457570:5873783")
+    implementation("maven.modrinth:cloth-config:${cloth_config_version}")
+    runtimeOnly("dev.emi:emi-neoforge:${emi_version}")
+    runtimeOnly("maven.modrinth:jade:${jade_version}")
+
+    //JEI SUPPORT
+    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 }
 
 tasks.withType(ProcessResources).configureEach {
