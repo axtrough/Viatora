@@ -1,7 +1,7 @@
 package net.raccoon.will.viatora.core.mixin;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -21,7 +21,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.raccoon.will.viatora.common.block.ColoredBeehiveBlock;
-import net.raccoon.will.viatora.common.block.ColoredBeehiveBlockEntity;
 import net.raccoon.will.viatora.core.registry.VBlockEntities;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -33,84 +32,64 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BeehiveBlockMixin {
 
     @Unique
-    public void viatora$transferData(Level level, BlockPos pos, BlockState state, BlockEntity oldBlockEntity, BlockEntity newBlockEntity) {
-        CompoundTag nbt = oldBlockEntity.saveWithFullMetadata(level.registryAccess());
-        newBlockEntity.loadCustomOnly(nbt, level.registryAccess());
+    private void viatora$transferData(Level level, BeehiveBlockEntity oldBE, BlockEntity newBE) {
+        newBE.loadCustomOnly(oldBE.saveWithFullMetadata(level.registryAccess()), level.registryAccess());
+    }
+
+    @Unique
+    private boolean viatora$replaceBlock(Level level, BlockPos pos, BlockState oldState, BlockState newState, BeehiveBlockEntity oldBE, BlockEntityType<?> type, Player player, ItemStack stack, SoundEvent sound) {
+        level.removeBlockEntity(pos);
+        level.setBlock(pos, newState, 3);
+        BlockEntity newBE = type.create(pos, newState);
+
+        if (newBE == null) return false;
+        viatora$transferData(level, oldBE, newBE);
+        level.setBlockEntity(newBE);
+
+        if (!player.isCreative()) stack.shrink(1);
+
+        level.playSound(player, pos, sound, SoundSource.AMBIENT, 1F, 1F);
+        level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.AMBIENT, 1F, 1F);
+        return true;
     }
 
     @Inject(method = "useItemOn", at = @At("TAIL"), cancellable = true)
-    public void onBottleUse(ItemStack itemStack, BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult, CallbackInfoReturnable<ItemInteractionResult> cir) {
+    public void onItemUse(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player,
+                          InteractionHand hand, BlockHitResult hitResult, CallbackInfoReturnable<ItemInteractionResult> cir) {
+        if (!(level.getBlockEntity(pos) instanceof BeehiveBlockEntity oldBE)) return;
+
         ItemStack stack = player.getItemInHand(hand);
-        BlockState vanillaState = Blocks.BEEHIVE.defaultBlockState()
-                .setValue(BeehiveBlock.FACING, blockState.getValue(BeehiveBlock.FACING))
-                .setValue(BeehiveBlock.HONEY_LEVEL, blockState.getValue(BeehiveBlock.HONEY_LEVEL));
-        if (stack.is(Items.POTION) && blockState.getBlock() instanceof ColoredBeehiveBlock) {
+        BlockState newState = state.setValue(BeehiveBlock.FACING, state.getValue(BeehiveBlock.FACING))
+                .setValue(BeehiveBlock.HONEY_LEVEL, state.getValue(BeehiveBlock.HONEY_LEVEL));
 
-            if (level.getBlockEntity(pos) instanceof ColoredBeehiveBlockEntity oldBeehive) {
-                level.removeBlockEntity(pos);
-                level.setBlock(pos, vanillaState, 3);
-
-                BlockEntity newBeehive = BlockEntityType.BEEHIVE.create(pos, vanillaState);
-                if (newBeehive != null) {
-                    viatora$transferData(level, pos, blockState, oldBeehive, newBeehive);
-                    level.setBlockEntity(newBeehive);
-
-                    if (!player.isCreative()) {
-                        stack.shrink(1);
-                        player.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));
-                    }
-
-                    level.playSound(player, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.AMBIENT, 1F, 1F);
-                    level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.AMBIENT, 1F, 1F);
-                    cir.setReturnValue(ItemInteractionResult.SUCCESS);
-                }
+        if (stack.is(Items.POTION) && state.getBlock() instanceof ColoredBeehiveBlock) {
+            if (viatora$replaceBlock(level, pos, state, Blocks.BEEHIVE.defaultBlockState()
+                            .setValue(BeehiveBlock.FACING, state.getValue(BeehiveBlock.FACING))
+                            .setValue(BeehiveBlock.HONEY_LEVEL, state.getValue(BeehiveBlock.HONEY_LEVEL)),
+                    oldBE, BlockEntityType.BEEHIVE, player, stack, SoundEvents.BOTTLE_EMPTY)) {
+                if (!player.isCreative()) player.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));
+                cir.setReturnValue(ItemInteractionResult.SUCCESS);
             }
+            return;
         }
-    }
 
-    @Inject(method = "useItemOn", at = @At("TAIL"), cancellable = true)
-    public void onDyeUse(ItemStack itemStack, BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult, CallbackInfoReturnable<ItemInteractionResult> cir) {
-        ItemStack stack = player.getItemInHand(hand);
-        if (!(stack.getItem() instanceof DyeItem dyeItem)) return;
+        if (stack.getItem() instanceof DyeItem dyeItem) {
+            DyeColor color = dyeItem.getDyeColor();
+            if (color == null) return;
 
-        DyeColor dyeColor = dyeItem.getDyeColor();
-        if (dyeColor == null) return;
-
-        Block targetBlock = ColoredBeehiveBlock.getBlockbyColor(dyeColor);
-        if (!(targetBlock instanceof ColoredBeehiveBlock)) return;
-
-        if (blockState.getBlock() instanceof BeehiveBlock) {
-            if (blockState.is(targetBlock)) {
-                cir.setReturnValue(ItemInteractionResult.FAIL);
+            Block target = ColoredBeehiveBlock.getBlockbyColor(color);
+            if (!(target instanceof ColoredBeehiveBlock) || state.is(target)) {
+                if (state.is(target)) cir.setReturnValue(ItemInteractionResult.FAIL);
                 return;
             }
 
-            BlockState newState = targetBlock.defaultBlockState()
-                    .setValue(BeehiveBlock.FACING, blockState.getValue(BeehiveBlock.FACING))
-                    .setValue(BeehiveBlock.HONEY_LEVEL, blockState.getValue(BeehiveBlock.HONEY_LEVEL));
-
-            if (level.getBlockEntity(pos) instanceof BeehiveBlockEntity oldBeehive) {
-                level.removeBlockEntity(pos);
-                level.setBlock(pos, newState, 3);
-
-                BlockEntityType<ColoredBeehiveBlockEntity> type = VBlockEntities.BEEHIVE.get();
-                BlockEntity newBeehive = type.create(pos, newState);
-
-                if (newBeehive != null) {
-                    viatora$transferData(level, pos, blockState, oldBeehive, newBeehive);
-                    level.setBlockEntity(newBeehive);
-
-                    if (!player.isCreative()) {
-                        stack.shrink(1);
-                    }
-
-                    level.playSound(player, pos, SoundEvents.DYE_USE, SoundSource.AMBIENT, 1F, 1F);
-                    level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.AMBIENT, 1F, 1F);
-                    cir.setReturnValue(ItemInteractionResult.SUCCESS);
-                } else {
-                    cir.setReturnValue(ItemInteractionResult.FAIL);
-                }
-
+            if (viatora$replaceBlock(level, pos, state, target.defaultBlockState()
+                            .setValue(BeehiveBlock.FACING, state.getValue(BeehiveBlock.FACING))
+                            .setValue(BeehiveBlock.HONEY_LEVEL, state.getValue(BeehiveBlock.HONEY_LEVEL)),
+                    oldBE, VBlockEntities.BEEHIVE.get(), player, stack, SoundEvents.DYE_USE)) {
+                cir.setReturnValue(ItemInteractionResult.SUCCESS);
+            } else {
+                cir.setReturnValue(ItemInteractionResult.FAIL);
             }
         }
     }
