@@ -12,8 +12,9 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.raccoon.will.viatora.core.config.ViatoraConfig;
+import net.raccoon.will.viatora.core.config.ViatoraClothConfig;
 import net.raccoon.will.viatora.core.misc.VCreativeTab;
 import net.raccoon.will.viatora.core.misc.ViatoraPoi;
 import net.raccoon.will.viatora.core.registry.*;
@@ -22,7 +23,7 @@ import net.raccoon.will.viatora.core.registry.*;
 @Mod(Viatora.MODID)
 public class Viatora {
     public static final String MODID = "viatora";
-    public static ViatoraConfig config;
+    public static ViatoraClothConfig config;
 
 
     public Viatora(IEventBus modEventBus, ModContainer modContainer) {
@@ -42,10 +43,10 @@ public class Viatora {
 
 
         //Config
-        AutoConfig.register(ViatoraConfig.class, GsonConfigSerializer::new);
-        config = AutoConfig.getConfigHolder(ViatoraConfig.class).getConfig();
+        AutoConfig.register(ViatoraClothConfig.class, GsonConfigSerializer::new);
+
         modContainer.registerExtensionPoint(IConfigScreenFactory.class,
-                (mc, parent) -> AutoConfig.getConfigScreen(ViatoraConfig.class, parent).get());
+                (mc, parent) -> AutoConfig.getConfigScreen(ViatoraClothConfig.class, parent).get());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -55,14 +56,15 @@ public class Viatora {
     public void onServerStarting(ServerStartingEvent event) {
     }
 
-//    @SubscribeEvent
-//    public void onFarmlandTrample(BlockEvent.FarmlandTrampleEvent event) {
-//        if (new ViatoraConfig.TrampleEnum().apply(event.getEntity())) {
-//            event.setCanceled(true);
-//        }
-//    }
+    @SubscribeEvent
+    public void onFarmlandTrample(BlockEvent.FarmlandTrampleEvent event) {
+        ViatoraClothConfig config = AutoConfig.getConfigHolder(ViatoraClothConfig.class).getConfig();
+        if (config.TrampleOption.apply(event.getEntity())) {
+            event.setCanceled(true);
+        }
+    }
 
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = Viatora.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {

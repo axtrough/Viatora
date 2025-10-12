@@ -17,12 +17,20 @@
   "block.viatora.black_beehive": "Black Beehive",
   "block.viatora.brown_beehive": "Brown Beehive",
 
+  //Items
+
   //Misc
   "creativetab.viatora.viatora_tab": "Viatora",
 
-
   //Config
   "text.autoconfig.viatora.title": "Viatora Config",
+
   "text.autoconfig.viatora.option.ThrowablesHit": "Throwables Deal Knockback",
-  "text.autoconfig.viatora.option.TrampleLevel": "Trample Feather Falling Level"
+  "text.autoconfig.viatora.option.ThrowablesHit.@Tooltip": "Controls if snowballs and eggs deal knockback on players.",
+
+  "text.autoconfig.viatora.option.TrampleLevel": "Trample Feather Falling Level",
+  "text.autoconfig.viatora.option.TrampleLevel.@Tooltip": "The minimum Feather Falling level required to prevent trampling.",
+
+  "text.autoconfig.viatora.option.TrampleOption": "Trample Behavior",
+  "text.autoconfig.viatora.option.TrampleOption.@Tooltip": "Controls when farmland can be trampled."
 }
