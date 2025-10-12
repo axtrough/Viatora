@@ -11,4 +11,4 @@ Viatora is a mod that aims to enhance Minecraft by improving certain aspects of 
 The mod exists on [Modrinth](https://modrinth.com/mod/viatora) and [Curseforge](https://www.curseforge.com/minecraft/mc-mods/viatora)
 
 ## Credits
-- [DinoFazbear](https://github.com/DinoFazbearYT) Helping with BeehiveMixin
+- [DinoFazbearYT](https://github.com/DinoFazbearYT) Helping with BeehiveMixin
