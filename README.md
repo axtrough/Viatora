@@ -1,6 +1,6 @@
 # Viatora 🍂
 
-Viatora is a mod that aims to improve on some areas in fun or useful ways. It tries keeping the original game intact while making the gameplay a more enjoyable experience.
+Viatora is a mod that aims to enhance Minecraft by improving certain aspects of the game in both fun and practical ways. Its goal is to preserve the charm and balance of the original experience while introducing features that make gameplay feel richer, smoother, and more rewarding.
 
 ## Current Features
 - Snowballs and eggs will now deal knockback on players
