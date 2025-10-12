@@ -1,6 +1,7 @@
 package net.raccoon.will.viatora.core.mixin;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -11,6 +12,8 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BeehiveBlock;
 import net.minecraft.world.level.block.Block;
@@ -62,7 +65,9 @@ public class BeehiveBlockMixin {
         BlockState newState = state.setValue(BeehiveBlock.FACING, state.getValue(BeehiveBlock.FACING))
                 .setValue(BeehiveBlock.HONEY_LEVEL, state.getValue(BeehiveBlock.HONEY_LEVEL));
 
-        if (stack.is(Items.POTION) && state.getBlock() instanceof ColoredBeehiveBlock) {
+
+        PotionContents potioncontents = itemStack.getOrDefault(DataComponents.POTION_CONTENTS, PotionContents.EMPTY);
+        if (potioncontents.is(Potions.WATER) && state.getBlock() instanceof ColoredBeehiveBlock) {
             if (viatora$replaceBlock(level, pos, state, Blocks.BEEHIVE.defaultBlockState()
                             .setValue(BeehiveBlock.FACING, state.getValue(BeehiveBlock.FACING))
                             .setValue(BeehiveBlock.HONEY_LEVEL, state.getValue(BeehiveBlock.HONEY_LEVEL)),
