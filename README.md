@@ -11,6 +11,7 @@ Viatora is a mod that aims to enhance Minecraft by improving certain aspects of 
 - [ ] Add non "cloth" config
 - [ ] Custom cloth config screen
 - [ ] More config options/features
+- [ ] Update to newer versions. (1.21.9)
 
 # Downloads
 The mod exists on [Modrinth](https://modrinth.com/mod/viatora) and [Curseforge](https://www.curseforge.com/minecraft/mc-mods/viatora)
