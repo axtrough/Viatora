@@ -8,7 +8,7 @@ Viatora is a mod that aims to enhance Minecraft by improving certain aspects of 
 - Farmlands will not be trampled if your boots carry any level of feather falling. (this can be changed in the configs)
 
 ## To-Do
-- [ ] Add non "cloth" config
+- [x] Add non "cloth" config
 - [ ] Custom cloth config screen
 - [ ] More config options/features
 - [ ] Update to newer versions. (1.21.9)
