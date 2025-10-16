@@ -52,10 +52,6 @@ public class VBlocks {
         return toReturn;
     }
 
-    private static Block beehiveBlock(@Nullable DyeColor color, MapColor mapColor) {
-        return new ColoredBeehiveBlock(color, BlockBehaviour.Properties.ofFullCopy(Blocks.BEEHIVE));
-    }
-
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         return registerBlock(name, block, true);
     }

@@ -20,7 +20,7 @@ import java.util.function.Function;
 import static net.raccoon.will.viatora.Viatora.config;
 
 
-@Config(name = "viatora")
+@Config(name = "ViatoraConfig")
 public class ViatoraClothConfig implements ConfigData {
 
 

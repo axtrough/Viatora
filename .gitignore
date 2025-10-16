@@ -118,3 +118,5 @@ runs/
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
 /src/generated/resources/.cache/
+/src/main/java/net/raccoon/will/viatora/core/misc/dev/
+/src/main/resources/assets/viatora/textures/cape/
