@@ -30,7 +30,6 @@ public class Viatora {
 
 
     public Viatora(IEventBus modEventBus, ModContainer modContainer) {
-
         modEventBus.addListener(this::commonSetup);
         NeoForge.EVENT_BUS.register(this);
 
